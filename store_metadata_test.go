@@ -250,7 +250,7 @@ func TestMetadataContactLifecycle(t *testing.T) {
 		_, contacts[i] = meta[i].GetIncomingContactRequestsStatus()
 		require.NotNil(t, contacts[i])
 
-		contacts[i].Metadata = []byte(fmt.Sprintf("own meta %d", i))
+		contacts[i].Metadata = fmt.Appendf(nil, "own meta %d", i)
 	}
 
 	_, randPK, err := crypto.GenerateEd25519Key(crand.Reader)
@@ -702,7 +702,7 @@ func TestFlappyMultiDevices_Basic(t *testing.T) {
 		_, contacts[i] = meta[i].GetIncomingContactRequestsStatus()
 		require.NotNil(t, contacts[i])
 
-		contacts[i].Metadata = []byte(fmt.Sprintf("own meta %d", i))
+		contacts[i].Metadata = fmt.Appendf(nil, "own meta %d", i)
 	}
 
 	syncChan := make(chan struct{})

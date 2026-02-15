@@ -86,7 +86,7 @@ func Test_AddMessage_ListMessages_manually_supplying_secrets(t *testing.T) {
 	}()
 
 	for i := 0; i < entriesCount; i++ {
-		payload := []byte(fmt.Sprintf("test message %d", i))
+		payload := fmt.Appendf(nil, "test message %d", i)
 		_, err = peers[0].GC.MessageStore().AddMessage(ctx, payload)
 		require.NoError(t, err)
 	}
@@ -149,7 +149,7 @@ func Test_Add_Messages_To_Cache(t *testing.T) {
 	require.NoError(t, err)
 
 	for i := 0; i < entriesCount; i++ {
-		payload := []byte(fmt.Sprintf("test message %d", i))
+		payload := fmt.Appendf(nil, "test message %d", i)
 		_, err = peers[0].GC.MessageStore().AddMessage(ctx, payload)
 		require.NoError(t, err)
 	}

@@ -91,7 +91,7 @@ func testAddBerty(ctx context.Context, t *testing.T, node ipfsutil.CoreAPIMock, 
 	require.NoError(t, err)
 
 	for i := 0; i < amountToAdd; i++ {
-		_, err := gc.MessageStore().AddMessage(ctx, []byte(fmt.Sprintf("%d", i)))
+		_, err := gc.MessageStore().AddMessage(ctx, fmt.Appendf(nil, "%d", i))
 		require.NoError(t, err)
 		wg.Done()
 	}

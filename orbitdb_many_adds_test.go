@@ -72,7 +72,7 @@ func TestAdd(t *testing.T) {
 	defer db.Close()
 
 	for n := 0; n < amount; n++ {
-		if _, err := db.Add(ctx, []byte(fmt.Sprintf("%d", n))); err != nil {
+		if _, err := db.Add(ctx, fmt.Appendf(nil, "%d", n)); err != nil {
 			t.Fatal(err)
 		}
 	}
